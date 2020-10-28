@@ -27,6 +27,7 @@ this project was bootstraped by [Create React App](https://create-react-app.dev/
 │   │   │   │── {module}Types/       # Redux types
 │   ├── assets/                      # Asset components
 │   ├── pages/                       # Pages
+│   ├── socket/                      # Websocket messaging management
 │   ├── helpers/                     # Helpers 
 │   ├── utils/                       # Utils 
 │   ├── Router/                      # Application route definitions

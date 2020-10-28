@@ -11,7 +11,7 @@ const Router = () => {
         <Route path='/' exact>
           <JoinRoom />
         </Route>
-        <Route path='room/:roomId'>
+        <Route path='/room/:roomId'>
           <Room />
         </Route>
       </Switch>

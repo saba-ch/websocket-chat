@@ -7,6 +7,13 @@ const WebSocketContext = createContext(null)
 
 export { WebSocketContext }
 
+// const eventTypes = {
+//   userJoined: 'userJoined',
+//   userLeft: 'userLeft',
+//   roomInfo: 'roomInfo',
+//   newMessage: 'newMessage',
+// }
+
 const WebSocket = ({ children }) => {
   let socket
 
@@ -15,7 +22,7 @@ const WebSocket = ({ children }) => {
   const connect = ({ user_id, user_name, room_id = 1 }) => {
     if (socket) return
     const params = new URLSearchParams({ user_id, user_name, room_id })
-    socket = new window.WebSocket(`${config.WS_URL}${params}`)
+    socket = new window.WebSocket(`${config.WS_URL}?${params}`)
     
     socket.onmessage = (msg) => {
       const data = JSON.parse(msg.data)
