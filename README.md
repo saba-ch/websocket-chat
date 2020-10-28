@@ -1,70 +1,106 @@
-# Getting Started with Create React App
+# NEWROW Chat example
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## Available Scripts
+this project was bootstraped by [Create React App](https://create-react-app.dev/)
 
-In the project directory, you can run:
+### Tech Stack
 
-### `yarn start`
+- [Create React app][cra] for development infrastructure
+- [Redux][redux] for state management
+- [MATERIAL UI][material-ui] for ui components
+- [Websocket API][Websocket] for websocket communication
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Directory Layout
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```bash
+├── build/                           # Compiled output
+├── node_modules/                    # 3rd-party libraries and utilities
+├── public/                          # Static files such as index.html etc.
+├── src/                             # Application source code
+│   ├── components/                  # Shared React components
+│   ├── hooks/                       # React hooks
+│   ├── state/                       # Redux state
+│   │   │── {module}/                # Module
+│   │   │   │── {module}Actions.js/  # Redux actions
+│   │   │   │── {module}Reducers.js/ # Redux reducers
+│   │   │   │── {module}Types/       # Redux types
+│   ├── assets/                      # Asset components
+│   ├── pages/                       # Pages
+│   ├── helpers/                     # Helpers 
+│   ├── utils/                       # Utils 
+│   ├── Router/                      # Application route definitions
+│   ├── config/                      # Application config
+```
 
-### `yarn test`
+### Getting Started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+$ git clone https://github.com/xxx/xxx
+$ cd xxx
+$ yarn
+$ yarn start
+```
 
-### `yarn build`
+## Environment Variables
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+environment variable is set by REACT_APP_STAGE env variable
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Running the app
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+# development (connects to development server)
+$ yarn start
 
-### `yarn eject`
+# local mode (connects to local server)
+$ yarn start:local
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Then open [http://localhost:3000/](http://localhost:3000/) to see your app.<br>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Scripts
 
-## Learn More
+#### Start scripts
+```bash
+$ yarn start # connecting on dev backend
+$ yarn start:local # connecting on local backend
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### Build
+```bash
+$ yarn build # building application on production environment
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Packages
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [@ant-design/icons](https://www.npmjs.com/package/@ant-design/icons) - Icons
+- [@apollo/react-hooks](https://www.npmjs.com/package/@apollo/react-hooks) - Hooks for apollo client 
+- [ace-builds](https://www.npmjs.com/package/ace-builds) - React-ace uses this built binary
+- [antd](https://www.npmjs.com/package/antd) - Ui components library
+- [apexcharts](https://www.npmjs.com/package/apexcharts) - React-apexcharts uses this build binary
+- [apollo-cache-inmemory](https://www.npmjs.com/package/apollo-cache-inmemory) - This allows apollo to cache in memory
+- [apollo-client](https://www.npmjs.com/package/apollo-client) - Apollo library we use it to connect to backend
+- [apollo-link](https://www.npmjs.com/package/apollo-link) - Combines multiple apollo links to work together
+- [apollo-link-context](https://www.npmjs.com/package/apollo-link-context) - Sets apollo context for example authorization header
+- [apollo-link-error](https://www.npmjs.com/package/apollo-link-error) - Error middleware
+- [apollo-upload-client](https://www.npmjs.com/package/apollo-upload-client) - Upload client for apollo
+- [axios](https://www.npmjs.com/package/axios) - Making http requests
+- [fbemitter](https://www.npmjs.com/package/fbemitter) - Fbemitter is same as nodejs event emitter we use this for drawers
+- [graphql.macro](https://www.npmjs.com/package/graphql.macro) - Loads graphql files
+- [i18next](https://www.npmjs.com/package/i18next) - Translates pages
+- [i18next-browser-languagedetector](https://www.npmjs.com/package/i18next-browser-languagedetector) - Detects browser language
+- [moment](https://www.npmjs.com/package/moment) - Easy api for working with dates
+- [qs](https://www.npmjs.com/package/qs) - Query string serialize/deserialize
+- [ramda](https://www.npmjs.com/package/ramda) - Functional programing library for immutability
+- [react-ace](https://www.npmjs.com/package/react-ace) - Code editor
+- [react-apexcharts](https://www.npmjs.com/package/react-apexcharts) - Charts library
+- [react-color](https://www.npmjs.com/package/react-color) - Color picker
+- [react-country-flag](https://www.npmjs.com/package/react-country-flag) - Country flag component
+- [react-csv](https://www.npmjs.com/package/react-csv) - generates csv from json
+- [react-datepicker](https://www.npmjs.com/package/react-datepicker) - Datepicker
+- [react-google-recaptcha-v3](https://www.npmjs.com/package/react-google-recaptcha-v3) - Google recaptcha library
+- [react-icons](https://www.npmjs.com/package/react-icons) - Icons library
+- [react-router-dom](https://www.npmjs.com/package/react-router-dom) - React routing library
+- [styled-components](https://www.npmjs.com/package/styled-components) - Styling components
