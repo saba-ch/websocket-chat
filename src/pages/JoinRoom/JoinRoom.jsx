@@ -17,23 +17,22 @@ import {
 
 const JoinRoom = () => {
   const [userName, setUserName] = useState('')
-  const history = useHistory()
   const dispatch = useDispatch()
 
   const { connect } = useContext(WebSocketContext)
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    connect({ user_id: userName, user_name: userName })
+    const roomId = 1
+    connect({ user_id: userName, user_name: userName, room_id: roomId })
 
     dispatch(
       userActions.setUser({
         id: userName,
-        name: userName
+        name: userName,
+        roomId
       })
     )
-
-    history.push('/room/1')
   }
 
   return (

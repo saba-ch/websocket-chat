@@ -3,6 +3,7 @@ import * as userTypes from './userTypes'
 const initialState = {
   id: '',
   name: '',
+  roomId: ''
 }
 
 const userReducer = (state = initialState, action) => {

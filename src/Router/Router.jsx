@@ -1,19 +1,22 @@
 import React from 'react'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Switch } from 'react-router-dom'
 
 import JoinRoom from 'pages/JoinRoom'
 import Room from 'pages/Room'
+
+import NotAuthRoute from './NotAuthRoute'
+import AuthRoute from './AuthRoute'
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path='/' exact>
+        <NotAuthRoute path='/' exact>
           <JoinRoom />
-        </Route>
-        <Route path='/room/:roomId'>
+        </NotAuthRoute>
+        <AuthRoute path='/room/:roomId'>
           <Room />
-        </Route>
+        </AuthRoute>
       </Switch>
     </BrowserRouter>
   )
