@@ -14,3 +14,8 @@ export const addRoomUser = (payload) => ({
   type: roomTypes.ADD_ROOM_USER,
   payload
 })
+
+export const removeRoomUser = (payload) => ({
+  type: roomTypes.REMOVE_ROOM_USER,
+  payload
+})

@@ -1,11 +1,9 @@
-import React, { useContext, useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Input, InputLabel } from '@material-ui/core'
 
-import { WebSocketContext } from 'socket'
-
 import * as userActions from 'state/user/userActions'
+import Socket from 'socket'
 
 import {
   StyledContainer,
@@ -19,12 +17,11 @@ const JoinRoom = () => {
   const [userName, setUserName] = useState('')
   const dispatch = useDispatch()
 
-  const { connect } = useContext(WebSocketContext)
-
   const handleSubmit = (e) => {
     e.preventDefault()
     const roomId = 1
-    connect({ user_id: userName, user_name: userName, room_id: roomId })
+
+    Socket.connect({ user_id: userName, user_name: userName, room_id: roomId })
 
     dispatch(
       userActions.setUser({

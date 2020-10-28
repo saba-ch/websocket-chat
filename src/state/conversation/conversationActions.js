@@ -10,7 +10,7 @@ export const addConversation = (payload) => ({
   payload
 })
 
-export const removeConversation = (payload) => ({
-  type: conversationTypes.REMOVE_CONVERSATION,
+export const addMessage = (payload) => ({
+  type: conversationTypes.ADD_MESSAGE,
   payload
 })
