@@ -3,14 +3,15 @@ import { AppBar, Avatar, IconButton, Typography } from '@material-ui/core'
 
 import {
   StyledRoomTitleContainer,
-  StyledToolbar
+  StyledToolbar,
+  StyledContainer
 } from './ChatInfoStyles'
 
 const ChatInfo = () => {
   return (
-    <div>
-      <AppBar position='relative'>
-        <StyledToolbar variant='dense'>
+    <StyledContainer>
+      <AppBar elevation={0} color='default' position='relative'>
+        <StyledToolbar variant='regular'>
           <IconButton
             aria-label="account of current user"
             color="inherit"
@@ -27,7 +28,7 @@ const ChatInfo = () => {
           </StyledRoomTitleContainer>
         </StyledToolbar>
       </AppBar>
-    </div>
+    </StyledContainer>
   )
 }
 
