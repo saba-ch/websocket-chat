@@ -9,7 +9,7 @@ import {
 
 import * as conversationActions from 'state/conversation/conversationActions'
 
-import { StyledTypography } from './ConversationItemStyles'
+import { StyledTypography, StyledMessage } from './ConversationItemStyles'
 
 const ConversationItem = ({ conversationName, message, senderName, selected, conversationId }) => {
   const dispatch = useDispatch()
@@ -41,7 +41,7 @@ const ConversationItem = ({ conversationName, message, senderName, selected, con
                 >
                   {senderName}:{' '}
                 </StyledTypography>
-                {message}
+                <StyledMessage>{message}</StyledMessage>
               </>
             )}
             {!message && (

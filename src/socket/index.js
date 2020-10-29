@@ -19,6 +19,10 @@ class WebSocket {
     cb()
   }
 
+  static disconnect = () => {
+    WebSocket.socket.close()
+  }
+
   static removeListener = (event, cb) => {
     WebSocket.listeners[event] = WebSocket.listeners[event].filter(func => cb !== func)
   }

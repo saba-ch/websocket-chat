@@ -1,10 +1,15 @@
 import React, { useMemo } from 'react'
 import { Grid } from '@material-ui/core'
 
+import { SendSvg, SentSvg } from 'assets/svg'
+
 import {
   StyledContainer,
   StyledTimeStamp,
-  StyledMessage
+  StyledMessage,
+  StyledMessageStatus,
+  StyledMessageIcon,
+  StyledSender
 } from './MessageStyles'
 
 const Message = ({ me, message, senderName, date, delivered }) => {
@@ -17,15 +22,15 @@ const Message = ({ me, message, senderName, date, delivered }) => {
 
   const messageState = useMemo(() => {
     if(!me) return ''
-    if(me && !delivered) return 'sending '
-    if(me && delivered) return 'delivered '
+    if (me && !delivered) return <StyledMessageIcon src={SendSvg} />
+    if (me && delivered) return <StyledMessageIcon src={SentSvg} />
   }, [me, delivered])
 
   return (
     <StyledContainer bgColor={bgColor} marginDir={marginDir}>
       <Grid container>
         <Grid item xs={12}>
-          <StyledTimeStamp
+          <StyledSender
             align={align}
             marginDir={align}
             secondary={senderName}
@@ -38,11 +43,14 @@ const Message = ({ me, message, senderName, date, delivered }) => {
           />
         </Grid>
         <Grid item xs={12}>
-          <StyledTimeStamp
-            align={align}
-            marginDir={align}
-            secondary={`${messageState}${formattedDate}`}
-          />
+          <StyledMessageStatus>
+            {messageState}
+            <StyledTimeStamp
+              align={align}
+              marginDir={align}
+              secondary={formattedDate}
+            />
+          </StyledMessageStatus>
         </Grid>
       </Grid>
     </StyledContainer>
