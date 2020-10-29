@@ -2,7 +2,7 @@
 
 ---
 
-this project was bootstraped by [Create React App](https://create-react-app.dev/)
+this project was bootstrapped by [Create React App](https://create-react-app.dev/)
 
 ### Tech Stack
 
