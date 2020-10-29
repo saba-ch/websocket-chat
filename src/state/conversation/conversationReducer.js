@@ -57,8 +57,8 @@ const conversationReducer = (state = initialState, action) => {
 
       const currentConversation =  (conversationId === state.currentConversation?.id) ?
         ({
+          ...state.currentConversation,
           messages: [...state.currentConversation.messages, message],
-          id: state.currentConversation.id
         })
         :
         state.currentConversation
