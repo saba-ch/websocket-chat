@@ -1,9 +1,9 @@
 import React from 'react'
 import {
-  Grid,
   ListItem,
-  ListItemText,
 } from '@material-ui/core'
+
+import Message from 'components/Message'
 
 import { StyledList } from './ChatMessagesStyles'
 
@@ -11,14 +11,10 @@ const ChatMessages = () => {
   return (
     <StyledList>
       <ListItem key="1">
-        <Grid container>
-          <Grid item xs={12}>
-            <ListItemText align="right" primary="Hey man, What's up ?"></ListItemText>
-          </Grid>
-          <Grid item xs={12}>
-            <ListItemText align="right" secondary="09:30"></ListItemText>
-          </Grid>
-        </Grid>
+        <Message me />
+      </ListItem>
+      <ListItem key="2">
+        <Message />
       </ListItem>
     </StyledList>
   )

@@ -1,5 +1,9 @@
 import React from 'react'
 import { AppBar, Avatar, IconButton, Typography } from '@material-ui/core'
+import { useSelector } from 'react-redux'
+
+import * as conversationSelectors from 'state/conversation/conversationSelectors'
+import * as roomSelectors from 'state/room/roomSelectors'
 
 import {
   StyledRoomTitleContainer,
@@ -8,6 +12,9 @@ import {
 } from './ChatInfoStyles'
 
 const ChatInfo = () => {
+  const conversationName = useSelector(conversationSelectors.currentConversationNameSelector)
+  const usersLength = useSelector(roomSelectors.roomUsersLengthSelector)
+
   return (
     <StyledContainer>
       <AppBar elevation={0} color='default' position='relative'>
@@ -20,10 +27,10 @@ const ChatInfo = () => {
           </IconButton>
           <StyledRoomTitleContainer>
             <Typography variant='h6' color='inherit'>
-              Room Conversation
+              {conversationName}
             </Typography>
             <Typography color='inherit'>
-              12 users in conversation
+              {usersLength} users in conversation
             </Typography>
           </StyledRoomTitleContainer>
         </StyledToolbar>

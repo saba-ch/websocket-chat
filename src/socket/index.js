@@ -14,6 +14,11 @@ class WebSocket {
     }
   }
 
+  static emit = (eventName, payload, cb) => {
+    WebSocket.socket.send(JSON.stringify({ eventName, payload }))
+    cb()
+  }
+
   static removeListener = (event, cb) => {
     WebSocket.listeners[event] = WebSocket.listeners[event].filter(func => cb !== func)
   }

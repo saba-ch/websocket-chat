@@ -29,3 +29,10 @@ export const onUserJoined = dispatch => (payload) => {
 export const onUserLeft = dispatch => (payload) => {
   dispatch(roomActions.removeRoomUser({ userId: payload.userKey }))
 }
+
+export const onNewMessage = dispatch => (payload) => {
+  dispatch(conversationActions.addMessage({
+    conversationId: payload.conversation_id,
+    message: payload.message
+  }))
+}

@@ -18,7 +18,8 @@ const conversationReducer = (state = initialState, action) => {
       return { ...state, conversations }
     }
     case conversationTypes.SET_CURRENT_CONVERSATION: {
-      return { ...state, currentConversation: action.payload.conversationId }
+      const currentConversation = state.conversations.find(conversation => conversation.id === action.payload.conversationId)
+      return { ...state, currentConversation }
     }
     case conversationTypes.ADD_MESSAGE: {
       const { conversationId, message } = action.payload
@@ -29,10 +30,20 @@ const conversationReducer = (state = initialState, action) => {
         }
         return { ...conversation }
       })
+
+      const currentConversation = 
+        (conversationId === state.currentConversation.id) ?
+        ({
+          messages: [...state.currentConversation.message, message],
+          id: state.currentConversation.id
+        })
+        :
+        state.currentConversation
       
       return {
         ...state,
-        conversations
+        conversations,
+        currentConversation
       }
     }
     default:
