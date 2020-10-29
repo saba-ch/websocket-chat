@@ -7,17 +7,13 @@ export const onRoomInfo = (dispatch) => (payload) => {
 
   dispatch(roomActions.setRoomUsers(payload.room.users_list))
 
-  const conversations = payload.room.conversations_list.map(conversation => {
-    const { conversationMessages, id, name, lastMessage, type } = conversation
-
-    return {
-      id,
-      messages: conversationMessages,
-      name,
-      lastMessage,
-      type
-    }
-  })
+  const conversations = payload.room.conversations_list.map(({ conversationMessages: messages, id, name, lastMessage, type }) => ({
+    id,
+    messages,
+    name,
+    lastMessage,
+    type
+  }))
 
   dispatch(conversationActions.setConversations(conversations))
 }
@@ -30,7 +26,25 @@ export const onUserLeft = dispatch => (payload) => {
   dispatch(roomActions.removeRoomUser({ userId: payload.userKey }))
 }
 
-export const onNewMessage = dispatch => (payload) => {
+export const onNewMessage = (dispatch, currentUserId) => (payload) => {
+  if (currentUserId === payload.message.user.id) {
+    dispatch(
+      conversationActions.setDelivered({
+        conversationId: payload.conversation_id,
+        message: payload.message
+      })
+    )
+  } else {
+    dispatch(
+      conversationActions.addMessage({
+        conversationId: payload.conversation_id,
+        message: payload.message
+      })
+    )
+  }
+}
+
+export const sendMessage = dispatch => (payload) => {
   dispatch(conversationActions.addMessage({
     conversationId: payload.conversation_id,
     message: payload.message

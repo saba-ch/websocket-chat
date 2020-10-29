@@ -19,3 +19,8 @@ export const addMessage = (payload) => ({
   type: conversationTypes.ADD_MESSAGE,
   payload
 })
+
+export const setDelivered = (payload) => ({
+  type: conversationTypes.SET_DELIVERED,
+  payload
+})

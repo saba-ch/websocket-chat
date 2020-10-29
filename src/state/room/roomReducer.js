@@ -2,7 +2,7 @@ import * as roomTypes from './roomTypes'
 
 const initialState = {
   users: [],
-  id: 1
+  id: null
 }
 
 const roomReducer = (state = initialState, action) => {

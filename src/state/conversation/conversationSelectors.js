@@ -13,6 +13,4 @@ export const conversationSelector = (state, conversationId) => rootConversationS
   .conversations
   .find(conversation => conversation.id === conversationId)
 
-export const conversationMessagesSelector = (state, conversationId) => rootConversationSelector(state)
-  .conversations
-  .find(conversation => conversation.id === conversationId).messages
+export const currentConversationMessagesSelector = (state) => currentConversationSelector(state).messages

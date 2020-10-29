@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { Typography } from '@material-ui/core'
+import { ListItem, Typography } from '@material-ui/core'
 
 import * as conversationSelectors from 'state/conversation/conversationSelectors'
 
@@ -16,17 +16,19 @@ const Conversations = () => {
 
   return (
     <StyledList dense>
-      <Typography variant='h6' color='inherit'>
-        Conversations
-      </Typography>
+      <ListItem key='1'>
+        <Typography variant='h6' color='inherit'>
+          Conversations
+        </Typography>
+      </ListItem>
       {conversations.map(({ name, id, messages }) => (
         <ConversationItem
           key={id}
           selected={id === currentConversationId}
           conversationId={id}
           conversationName={name}
-          message={messages[0]?.text}
-          senderName={messages[0]?.sender?.name}
+          message={messages[messages.length - 1]?.message}
+          senderName={messages[messages.length - 1]?.user?.name}
         />
       ))}
     </StyledList>

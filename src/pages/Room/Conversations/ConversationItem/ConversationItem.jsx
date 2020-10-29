@@ -24,7 +24,7 @@ const ConversationItem = ({ conversationName, message, senderName, selected, con
   }
 
   return (
-    <ListItem onClick={handleSelect} selected={selected} alignItems='flex-start' button>
+    <ListItem key={conversationId} onClick={handleSelect} selected={selected} alignItems='flex-start' button>
       <ListItemAvatar>
         <Avatar alt='name' />
       </ListItemAvatar>
@@ -39,7 +39,7 @@ const ConversationItem = ({ conversationName, message, senderName, selected, con
                   variant='body2'
                   color='textPrimary'
                 >
-                  {senderName}
+                  {senderName}:{' '}
                 </StyledTypography>
                 {message}
               </>
@@ -60,4 +60,4 @@ const ConversationItem = ({ conversationName, message, senderName, selected, con
   )
 }
 
-export default ConversationItem
+export default React.memo(ConversationItem)

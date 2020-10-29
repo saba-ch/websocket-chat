@@ -12,5 +12,6 @@ export const StyledTimeStamp = styled(ListItemText)`
 `
 
 export const StyledMessage = styled(ListItemText)`
+  color: ${({ textColor }) => textColor};
   ${({ marginDir }) => `margin-${marginDir}: 10px`};
 `

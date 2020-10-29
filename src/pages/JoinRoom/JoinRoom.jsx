@@ -26,7 +26,7 @@ const JoinRoom = () => {
 
     dispatch(
       userActions.setUser({
-        id: userName,
+        id: userId,
         name: userName,
         roomId
       })

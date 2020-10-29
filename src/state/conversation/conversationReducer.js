@@ -1,9 +1,9 @@
+import { messageHelpers } from 'helpers'
+
 import * as conversationTypes from './conversationTypes'
 
 const initialState = {
-  conversations: [
-    { messages: [] }
-  ],
+  conversations: [],
   roomId: null,
   currentConversation: null
 }
@@ -21,20 +21,43 @@ const conversationReducer = (state = initialState, action) => {
       const currentConversation = state.conversations.find(conversation => conversation.id === action.payload.conversationId)
       return { ...state, currentConversation }
     }
-    case conversationTypes.ADD_MESSAGE: {
+
+    case conversationTypes.SET_DELIVERED: {
       const { conversationId, message } = action.payload
 
       const conversations = state.conversations.map(conversation => {
-        if(conversation.id === conversationId) {
-          return { ...conversation, messages: [...conversation.messages, message] }
+        if (conversation.id === conversationId) {
+          return {
+            ...conversation,
+            messages: messageHelpers.markMessageAsDelivered(conversation.messages, message)
+          }
         }
         return { ...conversation }
       })
 
-      const currentConversation = 
-        (conversationId === state.currentConversation.id) ?
+      const currentConversation = (conversationId === state.currentConversation.id) ?
         ({
-          messages: [...state.currentConversation.message, message],
+          ...state.currentConversation,
+          messages: messageHelpers.markMessageAsDelivered(state.currentConversation.messages, message)
+        })
+        :
+        state.currentConversation
+
+      return { ...state, conversations, currentConversation }
+    }
+    case conversationTypes.ADD_MESSAGE: {
+      const { conversationId, message } = action.payload
+
+      const conversations = state.conversations.map(conversation => {
+        if (conversation.id === conversationId) {
+          return { ...conversation, messages: [...conversation.messages, message] }
+        }
+        return conversation
+      })
+
+      const currentConversation =  (conversationId === state.currentConversation.id) ?
+        ({
+          messages: [...state.currentConversation.messages, message],
           id: state.currentConversation.id
         })
         :
