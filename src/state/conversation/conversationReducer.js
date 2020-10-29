@@ -35,7 +35,7 @@ const conversationReducer = (state = initialState, action) => {
         return { ...conversation }
       })
 
-      const currentConversation = (conversationId === state.currentConversation.id) ?
+      const currentConversation = (conversationId === state.currentConversation?.id) ?
         ({
           ...state.currentConversation,
           messages: messageHelpers.markMessageAsDelivered(state.currentConversation.messages, message)
@@ -55,7 +55,7 @@ const conversationReducer = (state = initialState, action) => {
         return conversation
       })
 
-      const currentConversation =  (conversationId === state.currentConversation.id) ?
+      const currentConversation =  (conversationId === state.currentConversation?.id) ?
         ({
           messages: [...state.currentConversation.messages, message],
           id: state.currentConversation.id

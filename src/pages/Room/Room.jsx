@@ -1,9 +1,9 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
+import { useSocket } from 'socket'
 import * as socketManager from 'socket/socketManager'
 import * as socketEvents from 'socket/socketEvents'
-import useSocket from 'socket/useSocket'
 import * as conversationSelectors from 'state/conversation/conversationSelectors'
 import * as userSelectors from 'state/user/userSelectors'
 
@@ -23,7 +23,6 @@ const Room = () => {
   const conversationId = useSelector(conversationSelectors.currentConversationIdSelector)
   const user = useSelector(userSelectors.userSelector)
 
-  useSocket(socketEvents.roomInfo, socketManager.onRoomInfo(dispatch))
   useSocket(socketEvents.newMessage, socketManager.onNewMessage(dispatch, user.id))
   useSocket(socketEvents.userJoined, socketManager.onUserJoined(dispatch))
   useSocket(socketEvents.userLeft, socketManager.onUserLeft(dispatch))

@@ -11,6 +11,21 @@ const markMessageAsDelivered = (messages, message) => {
   })
 }
 
+export const buildMessage = (conversationId, sendDate, message, user) => ({
+  conversation_id: conversationId,
+  message: {
+    id: sendDate.toString(),
+    time: sendDate,
+    message,
+    user: {
+      id: user.id,
+      name: user.name
+    },
+    delivered: false
+  }
+})
+
 export default {
-  markMessageAsDelivered
+  markMessageAsDelivered,
+  buildMessage
 }

@@ -4,6 +4,7 @@ import { Typography } from '@material-ui/core'
 export const StyledTypography = styled(Typography)`
 `
 
-export const StyledMessage = styled.div`
+export const StyledMessage = styled.p`
   overflow: hidden;
+  display: inline;
 `

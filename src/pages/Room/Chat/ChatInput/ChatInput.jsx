@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import { Fab, Grid, TextField } from '@material-ui/core'
 import { useSelector, useDispatch } from 'react-redux'
 
-import Socket from 'socket'
+import { useSocket } from 'socket'
 import * as socketEvents from 'socket/socketEvents'
 import * as socketManager from 'socket/socketManager'
 
+import { messageHelpers } from 'helpers'
 import * as conversationSelectors from 'state/conversation/conversationSelectors'
 import * as userSelectors from 'state/user/userSelectors'
 
@@ -16,31 +17,19 @@ const ChatInput = () => {
   const dispatch = useDispatch()
   const conversationId = useSelector(conversationSelectors.currentConversationIdSelector)
   const user = useSelector(userSelectors.userSelector)
+  
+  const { send } = useSocket(socketEvents.newMessage)
 
   const handleSend = (e) => {
     e.preventDefault()
     const sendDate = new Date()
-    const msg = {
-      conversation_id: conversationId,
-      message: {
-        id: sendDate.toString(),
-        time: sendDate,
-        message,
-        user: {
-          id: user.id,
-          name: user.name
-        },
-        delivered: false
-      }
-    }
-    Socket.emit(
-      socketEvents.newMessage,
-      {
-        conversation_id: conversationId,
-        message
-      },
+    const msg = messageHelpers.buildMessage(conversationId, sendDate, message, user)
+
+    send(
+      { conversation_id: conversationId, message },
       () => socketManager.sendMessage(dispatch)(msg)
     )
+
     setMessage('')
   }
   
