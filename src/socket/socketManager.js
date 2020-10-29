@@ -6,8 +6,20 @@ export const onRoomInfo = (dispatch) => (payload) => {
   dispatch(roomActions.setRoom({ id: payload.room.id }))
 
   dispatch(roomActions.setRoomUsers(payload.room.users_list))
-  
-  dispatch(conversationActions.setConversations(payload.room.conversations_list))
+
+  const conversations = payload.room.conversations_list.map(conversation => {
+    const { conversationMessages, id, name, lastMessage, type } = conversation
+
+    return {
+      id,
+      messages: conversationMessages,
+      name,
+      lastMessage,
+      type
+    }
+  })
+
+  dispatch(conversationActions.setConversations(conversations))
 }
 
 export const onUserJoined = dispatch => (payload) => {

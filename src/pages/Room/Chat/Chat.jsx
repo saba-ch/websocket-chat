@@ -1,9 +1,11 @@
 import React from 'react'
 
+import ChatInfo from './ChatInfo'
+
 const Chat = () => {
   return (
     <div>
-      Chat
+      <ChatInfo />
     </div>
   )
 }

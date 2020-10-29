@@ -15,13 +15,14 @@ import {
 
 const JoinRoom = () => {
   const [userName, setUserName] = useState('')
+  const [roomId, setRoomId] = useState('')
+  const [userId, setUserId] = useState('')
   const dispatch = useDispatch()
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const roomId = 1
 
-    Socket.connect({ user_id: userName, user_name: userName, room_id: roomId })
+    Socket.connect({ user_id: userId, user_name: userName, room_id: roomId })
 
     dispatch(
       userActions.setUser({
@@ -37,8 +38,16 @@ const JoinRoom = () => {
       <StyledHeader>Join Room</StyledHeader>
       <StyledForm onSubmit={handleSubmit}>
         <StyledNameInput fullWidth>
-          <InputLabel htmlFor='my-input'>Your name</InputLabel>
-          <Input value={userName} onChange={e => setUserName(e.target.value)} id='my-input' />
+          <InputLabel htmlFor='user-name'>Your name</InputLabel>
+          <Input value={userName} onChange={e => setUserName(e.target.value)} id='user-name' />
+        </StyledNameInput>
+        <StyledNameInput fullWidth>
+          <InputLabel htmlFor='room-id'>Room Id</InputLabel>
+          <Input value={roomId} onChange={e => setRoomId(e.target.value)} id='room-id' />
+        </StyledNameInput>
+        <StyledNameInput fullWidth>
+          <InputLabel htmlFor='user-id'>User Id</InputLabel>
+          <Input value={userId} onChange={e => setUserId(e.target.value)} id='user-id' />
         </StyledNameInput>
         <StyledSubmitButton
           variant='contained'

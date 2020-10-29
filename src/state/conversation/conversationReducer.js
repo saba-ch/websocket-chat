@@ -4,7 +4,8 @@ const initialState = {
   conversations: [
     { messages: [] }
   ],
-  roomId: 1
+  roomId: null,
+  currentConversation: null
 }
 
 const conversationReducer = (state = initialState, action) => {
@@ -15,6 +16,9 @@ const conversationReducer = (state = initialState, action) => {
     case conversationTypes.ADD_CONVERSATION: {
       const conversations = [...state.conversations, action.payload]
       return { ...state, conversations }
+    }
+    case conversationTypes.SET_CURRENT_CONVERSATION: {
+      return { ...state, currentConversation: action.payload.conversationId }
     }
     case conversationTypes.ADD_MESSAGE: {
       const { conversationId, message } = action.payload

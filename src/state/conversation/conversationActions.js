@@ -5,6 +5,11 @@ export const setConversations = (payload) => ({
   payload
 })
 
+export const setCurrentConversation = (payload) => ({
+  type: conversationTypes.SET_CURRENT_CONVERSATION,
+  payload
+})
+
 export const addConversation = (payload) => ({
   type: conversationTypes.ADD_CONVERSATION,
   payload
