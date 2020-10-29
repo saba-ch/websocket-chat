@@ -3,31 +3,32 @@ import { ListItemText } from '@material-ui/core'
 
 export const StyledContainer = styled.div`
   border-radius: 10px;
-  background-color: ${({ bgColor }) => bgColor};
-  ${({ marginDir }) => `margin-${marginDir}: auto`};
+  background-color: ${({ me }) => me ? '#0084ff' : '#e4e6eb'};
+  ${({ me }) => `margin-${me ? 'left' : 'right'}: auto`};
 `
 
 export const StyledTimeStamp = styled(ListItemText)`
-  ${({ marginDir }) => `margin-${marginDir}: 10px`};
+  ${({ me }) => `margin-${me ? 'right' : 'left'}: 10px`};
+  display: inline-block;
+  flex: inherit;
 `
 
 export const StyledSender = styled(ListItemText)`
-  ${({ marginDir }) => `margin-${marginDir}: 10px`};
+  ${({ me }) => `margin-${me ? 'right' : 'left'}: 10px`};
 `
 
 export const StyledMessage = styled(ListItemText)`
-  color: ${({ textColor }) => textColor};
-  ${({ marginDir }) => `margin-${marginDir}: 10px`};
+  color: ${({ me }) => me ? '#fff' : '#050505'};
+  ${({ me }) => `margin-${me ? 'right' : 'left'}: 10px`};
 `
 
 export const StyledMessageStatus = styled.div`
-  display: grid;
-  grid-auto-flow: column;
+  display: flex;
   align-items: center;
 `
 
 export const StyledMessageIcon = styled.img`
   height: 20px;
-  margin-left: 5px;
-  margin-right: auto;
+  margin-right: 10px;
+  margin-left: auto;
 `

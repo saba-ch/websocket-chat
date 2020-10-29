@@ -30,7 +30,7 @@ const ChatInfo = () => {
               {conversationName}
             </Typography>
             <Typography color='inherit'>
-              {usersLength} users in conversation
+              {usersLength} user in conversation
             </Typography>
           </StyledRoomTitleContainer>
         </StyledToolbar>

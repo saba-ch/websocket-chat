@@ -27,8 +27,7 @@ const Conversations = () => {
           selected={id === currentConversationId}
           conversationId={id}
           conversationName={name}
-          message={messages[messages.length - 1]?.message}
-          senderName={messages[messages.length - 1]?.user?.name}
+          latestMessage={messages[messages.length - 1]}
         />
       ))}
     </StyledList>

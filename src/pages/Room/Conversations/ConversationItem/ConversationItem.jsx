@@ -1,5 +1,5 @@
-import React from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useMemo } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import {
   Avatar,
   ListItem,
@@ -8,10 +8,15 @@ import {
 } from '@material-ui/core'
 
 import * as conversationActions from 'state/conversation/conversationActions'
+import * as userSelectors from 'state/user/userSelectors'
 
-import { StyledTypography, StyledMessage } from './ConversationItemStyles'
+import {
+  StyledTypography,
+  StyledMessage
+} from './ConversationItemStyles'
 
-const ConversationItem = ({ conversationName, message, senderName, selected, conversationId }) => {
+const ConversationItem = ({ conversationName, selected, conversationId, latestMessage }) => {
+  const currentUser = useSelector(userSelectors.userSelector)
   const dispatch = useDispatch()
 
   const handleSelect = () => {
@@ -22,6 +27,13 @@ const ConversationItem = ({ conversationName, message, senderName, selected, con
       })
     )
   }
+
+  const senderName = useMemo(() => {
+    if (latestMessage.user.id === currentUser.id) return 'You'
+    return latestMessage.user.name
+  }, [latestMessage, currentUser])
+
+  const { message } = latestMessage
 
   return (
     <ListItem key={conversationId} onClick={handleSelect} selected={selected} alignItems='flex-start' button>

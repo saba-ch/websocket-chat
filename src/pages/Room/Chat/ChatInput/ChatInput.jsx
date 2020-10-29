@@ -22,6 +22,8 @@ const ChatInput = () => {
 
   const handleSend = (e) => {
     e.preventDefault()
+    if (!message) return
+
     const sendDate = new Date()
     const msg = messageHelpers.buildMessage(conversationId, sendDate, message, user)
 
