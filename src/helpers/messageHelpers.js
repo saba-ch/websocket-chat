@@ -11,7 +11,7 @@ const markMessageAsDelivered = (messages, message) => {
   })
 }
 
-export const buildMessage = (conversationId, sendDate, message, user) => ({
+const buildMessage = (conversationId, sendDate, message, user) => ({
   conversation_id: conversationId,
   message: {
     id: sendDate.toString(),
@@ -25,7 +25,20 @@ export const buildMessage = (conversationId, sendDate, message, user) => ({
   }
 })
 
+const addDefaultZero = (num) => {
+  const str = num.toString()
+  return str.length === 1 ? `0${str}` : str
+}
+
+const formatDate = (date) => {
+  const hours = addDefaultZero(date.getHours())
+  const minutes = addDefaultZero(date.getMinutes())
+  
+  return `${hours}:${minutes}`
+}
+
 export default {
   markMessageAsDelivered,
-  buildMessage
+  buildMessage,
+  formatDate
 }

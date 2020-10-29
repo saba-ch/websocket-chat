@@ -29,18 +29,30 @@ class Socket {
   }
 
   static connect = ({ user_id, user_name, room_id = 1 }) => {
-    if (Socket.socket) return
-    const params = new URLSearchParams({ user_id, user_name, room_id })
-    Socket.socket = new window.WebSocket(`${config.WS_URL}?${params}`)
+    return new Promise((resolve, reject) => {
+      if (Socket.socket) return
 
-    Socket.socket.onmessage = (msg) => {
-      const data = JSON.parse(msg.data)
+      const params = new URLSearchParams({ user_id, user_name, room_id })
+      const socket = new window.WebSocket(`${config.WS_URL}?${params}`)
 
-      const listeners = Socket.listeners[data.eventName]
-      if (listeners) {
-        listeners.forEach((listener) => listener(data.payload))
+      socket.onmessage = (msg) => {
+        const data = JSON.parse(msg.data)
+
+        const listeners = Socket.listeners[data.eventName]
+        if (listeners) {
+          listeners.forEach((listener) => listener(data.payload))
+        }
       }
-    }
+
+      socket.onopen = () => {
+        Socket.socket = socket
+        resolve()
+      }
+
+      socket.onerror = () => {
+        reject()
+      }
+    })
   }
 }
 

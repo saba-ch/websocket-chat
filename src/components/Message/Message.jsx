@@ -2,6 +2,7 @@ import React, { useMemo } from 'react'
 import { Grid } from '@material-ui/core'
 
 import { SendSvg, SentSvg } from 'assets/svg'
+import { messageHelpers } from 'helpers'
 
 import {
   StyledContainer,
@@ -18,7 +19,7 @@ const Message = ({ me, message, senderName, date, delivered }) => {
   const textColor = useMemo(() => me ? '#fff' : '#050505', [me])
   const marginDir = useMemo(() => me ? 'left' : 'right', [me])
   
-  const formattedDate = useMemo(() => `${new Date(date).getHours()}:${new Date(date).getMinutes()}`, [date])
+  const formattedDate = useMemo(() => messageHelpers.formatDate(new Date(date)), [date])
 
   const messageState = useMemo(() => {
     if(!me) return ''

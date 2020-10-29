@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Input, InputLabel } from '@material-ui/core'
 
-import * as userActions from 'state/user/userActions'
 import Socket from 'socket'
+import { eventManager } from 'utils'
+import * as userActions from 'state/user/userActions'
 
 import {
   StyledContainer,
@@ -19,18 +20,23 @@ const JoinRoom = () => {
   const [userId, setUserId] = useState('')
   const dispatch = useDispatch()
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-
-    Socket.connect({ user_id: userId, user_name: userName, room_id: roomId })
-
-    dispatch(
-      userActions.setUser({
-        id: userId,
-        name: userName,
-        roomId
-      })
-    )
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault()
+      
+      await Socket.connect({ user_id: userId, user_name: userName, room_id: roomId })
+      eventManager.showNotificationSuccess('Connected to chat room')
+      
+      dispatch(
+        userActions.setUser({
+          id: userId,
+          name: userName,
+          roomId
+        })
+      )
+    } catch(err) {
+      eventManager.showNotificationFail('Could not connect to chat room')
+    }
   }
 
   return (

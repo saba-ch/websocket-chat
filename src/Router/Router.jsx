@@ -1,6 +1,8 @@
 import React from 'react'
 import { BrowserRouter, Switch } from 'react-router-dom'
 
+import Notification from 'components/Notification'
+
 import JoinRoom from 'pages/JoinRoom'
 import Room from 'pages/Room'
 
@@ -18,6 +20,7 @@ const Router = () => {
           <Room />
         </AuthRoute>
       </Switch>
+      <Notification />
     </BrowserRouter>
   )
 }
