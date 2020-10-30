@@ -45,12 +45,12 @@ $ yarn start
 
 ## Environment Variables
 
-environment variable is set by REACT_APP_STAGE env variable
+environment variable is set by REACT_APP_ENV env variable
 
 ## Running the app
 
 ```bash
-# development (connects to development server)
+# local (connects to local server)
 $ yarn start
 ```
 
@@ -61,8 +61,7 @@ Then open [http://localhost:3000/](http://localhost:3000/) to see your app.<br>
 
 #### Start scripts
 ```bash
-$ yarn start # connecting on dev backend
-$ yarn start:local # connecting on local backend
+$ yarn start # connecting on local backend
 ```
 
 #### Build
