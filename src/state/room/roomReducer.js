@@ -18,7 +18,7 @@ const roomReducer = (state = initialState, action) => {
       return { ...state, users }
     }
     case roomTypes.REMOVE_ROOM_USER: {
-      const users = [...state.users].filter(user => user.id !== action.payload.userId)
+      const users = state.users.filter(user => user.id !== action.payload.userId)
       return { ...state, users }
     }
     default:
