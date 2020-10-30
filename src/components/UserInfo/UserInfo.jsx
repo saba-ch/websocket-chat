@@ -30,7 +30,7 @@ const UserInfo = () => {
                 {user.name.slice(0, 1)}
               </Avatar>
             </IconButton>
-            <Typography variant='subtitle' color='inherit'>
+            <Typography variant='subtitle1' color='inherit'>
               <p>User Id: {user.id}</p>
               <p>User Name: {user.name}</p>
             </Typography>
