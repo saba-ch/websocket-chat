@@ -36,8 +36,8 @@ this project was bootstrapped by [Create React App](https://create-react-app.dev
 ### Getting Started
 
 ```bash
-$ git clone https://github.com/xxx/xxx
-$ cd xxx
+$ git clone https://github.com/saba-coding/websocket-chat
+$ cd websocket-chat
 $ yarn
 $ yarn start
 ```
