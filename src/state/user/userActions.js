@@ -4,3 +4,7 @@ export const setUser = (payload) => ({
   type: userTypes.SET_USER,
   payload
 })
+
+export default {
+  setUser
+}

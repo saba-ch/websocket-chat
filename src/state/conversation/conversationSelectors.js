@@ -1,16 +1,26 @@
 
-export const rootConversationSelector = (state) => state.conversation
+const rootConversationSelector = (state) => state.conversation
 
-export const conversationsSelector = (state) => rootConversationSelector(state).conversations
+const conversationsSelector = (state) => rootConversationSelector(state).conversations
 
-export const currentConversationIdSelector = (state) => rootConversationSelector(state).currentConversation?.id
+const currentConversationIdSelector = (state) => rootConversationSelector(state).currentConversation?.id
 
-export const currentConversationSelector = (state) => rootConversationSelector(state).currentConversation
+const currentConversationSelector = (state) => rootConversationSelector(state).currentConversation
 
-export const currentConversationNameSelector = (state) => rootConversationSelector(state).currentConversation?.name
+const currentConversationNameSelector = (state) => rootConversationSelector(state).currentConversation?.name
 
-export const conversationSelector = (state, conversationId) => rootConversationSelector(state)
+const conversationSelector = (state, conversationId) => rootConversationSelector(state)
   .conversations
   .find(conversation => conversation.id === conversationId)
 
-export const currentConversationMessagesSelector = (state) => currentConversationSelector(state).messages
+const currentConversationMessagesSelector = (state) => currentConversationSelector(state).messages
+
+export default {
+  rootConversationSelector,
+  conversationsSelector,
+  currentConversationIdSelector,
+  currentConversationSelector,
+  currentConversationNameSelector,
+  conversationSelector,
+  currentConversationMessagesSelector
+}

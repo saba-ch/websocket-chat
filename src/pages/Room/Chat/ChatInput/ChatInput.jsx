@@ -3,12 +3,12 @@ import { Fab, Grid, TextField } from '@material-ui/core'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { useSocket } from 'socket'
-import * as socketEvents from 'socket/socketEvents'
-import * as socketManager from 'socket/socketManager'
+import socketEvents from 'socket/socketEvents'
+import socketManager from 'socket/socketManager'
 
 import { messageHelpers } from 'helpers'
-import * as conversationSelectors from 'state/conversation/conversationSelectors'
-import * as userSelectors from 'state/user/userSelectors'
+import conversationSelectors from 'state/conversation/conversationSelectors'
+import userSelectors from 'state/user/userSelectors'
 
 import { StyledGrid } from './ChatInputStyles'
 

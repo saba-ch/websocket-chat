@@ -1,8 +1,8 @@
 
-import * as roomActions from 'state/room/roomActions'
-import * as conversationActions from 'state/conversation/conversationActions'
+import roomActions from 'state/room/roomActions'
+import conversationActions from 'state/conversation/conversationActions'
 
-export const onRoomInfo = (dispatch) => (payload) => {
+const onRoomInfo = (dispatch) => (payload) => {
   dispatch(roomActions.setRoom({ id: payload.room.id }))
 
   dispatch(roomActions.setRoomUsers(payload.room.users_list))
@@ -18,15 +18,15 @@ export const onRoomInfo = (dispatch) => (payload) => {
   dispatch(conversationActions.setConversations(conversations))
 }
 
-export const onUserJoined = dispatch => (payload) => {
+const onUserJoined = dispatch => (payload) => {
   dispatch(roomActions.addRoomUser(payload.user))
 }
 
-export const onUserLeft = dispatch => (payload) => {
+const onUserLeft = dispatch => (payload) => {
   dispatch(roomActions.removeRoomUser({ userId: payload.userKey }))
 }
 
-export const onNewMessage = (dispatch, currentUserId) => (payload) => {
+const onNewMessage = (dispatch, currentUserId) => (payload) => {
   if (currentUserId === payload.message.user.id) {
     dispatch(
       conversationActions.setDelivered({
@@ -44,9 +44,17 @@ export const onNewMessage = (dispatch, currentUserId) => (payload) => {
   }
 }
 
-export const sendMessage = dispatch => (payload) => {
+const sendMessage = dispatch => (payload) => {
   dispatch(conversationActions.addMessage({
     conversationId: payload.conversation_id,
     message: payload.message
   }))
+}
+
+export default {
+  onRoomInfo,
+  onUserJoined,
+  onUserLeft,
+  onNewMessage,
+  sendMessage
 }

@@ -1,7 +1,14 @@
-export const userJoined = 'userJoined'
+const userJoined = 'userJoined'
 
-export const userLeft = 'userLeft'
+const userLeft = 'userLeft'
 
-export const roomInfo = 'roomInfo'
+const roomInfo = 'roomInfo'
 
-export const newMessage = 'newMessage'
+const newMessage = 'newMessage'
+
+export default {
+  userJoined,
+  userLeft,
+  roomInfo,
+  newMessage
+}

@@ -1,26 +1,34 @@
 import * as conversationTypes from './conversationTypes'
 
-export const setConversations = (payload) => ({
+const setConversations = (payload) => ({
   type: conversationTypes.SET_CONVERSATIONS,
   payload
 })
 
-export const setCurrentConversation = (payload) => ({
+const setCurrentConversation = (payload) => ({
   type: conversationTypes.SET_CURRENT_CONVERSATION,
   payload
 })
 
-export const addConversation = (payload) => ({
+const addConversation = (payload) => ({
   type: conversationTypes.ADD_CONVERSATION,
   payload
 })
 
-export const addMessage = (payload) => ({
+const addMessage = (payload) => ({
   type: conversationTypes.ADD_MESSAGE,
   payload
 })
 
-export const setDelivered = (payload) => ({
+const setDelivered = (payload) => ({
   type: conversationTypes.SET_DELIVERED,
   payload
 })
+
+export default {
+  setConversations,
+  setCurrentConversation,
+  addConversation,
+  addMessage,
+  setDelivered
+}

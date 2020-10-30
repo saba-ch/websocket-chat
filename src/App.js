@@ -2,8 +2,8 @@ import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
 import Socket, { useSocket } from 'socket'
-import * as socketEvents from 'socket/socketEvents'
-import * as socketManager from 'socket/socketManager'
+import socketEvents from 'socket/socketEvents'
+import socketManager from 'socket/socketManager'
 
 import Router from 'Router'
 

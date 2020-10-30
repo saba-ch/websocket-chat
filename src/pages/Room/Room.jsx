@@ -2,10 +2,10 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { useSocket } from 'socket'
-import * as socketManager from 'socket/socketManager'
-import * as socketEvents from 'socket/socketEvents'
-import * as conversationSelectors from 'state/conversation/conversationSelectors'
-import * as userSelectors from 'state/user/userSelectors'
+import socketManager from 'socket/socketManager'
+import socketEvents from 'socket/socketEvents'
+import conversationSelectors from 'state/conversation/conversationSelectors'
+import userSelectors from 'state/user/userSelectors'
 
 import UserInfo from 'components/UserInfo'
 

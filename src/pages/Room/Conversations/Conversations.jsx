@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { ListItem, Typography } from '@material-ui/core'
 
-import * as conversationSelectors from 'state/conversation/conversationSelectors'
+import conversationSelectors from 'state/conversation/conversationSelectors'
 
 import ConversationItem from './ConversationItem'
 

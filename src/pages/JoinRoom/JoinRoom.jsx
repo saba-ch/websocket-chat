@@ -4,7 +4,7 @@ import { Input, InputLabel } from '@material-ui/core'
 
 import Socket from 'socket'
 import { eventManager } from 'utils'
-import * as userActions from 'state/user/userActions'
+import userActions from 'state/user/userActions'
 
 import {
   StyledContainer,
@@ -49,11 +49,11 @@ const JoinRoom = () => {
         </StyledNameInput>
         <StyledNameInput fullWidth>
           <InputLabel htmlFor='room-id'>Room Id</InputLabel>
-          <Input value={roomId} onChange={e => setRoomId(e.target.value)} id='room-id' />
+          <Input type='number' value={roomId} onChange={e => setRoomId(e.target.value)} id='room-id' />
         </StyledNameInput>
         <StyledNameInput fullWidth>
           <InputLabel htmlFor='user-id'>User Id</InputLabel>
-          <Input value={userId} onChange={e => setUserId(e.target.value)} id='user-id' />
+          <Input type='number' value={userId} onChange={e => setUserId(e.target.value)} id='user-id' />
         </StyledNameInput>
         <StyledSubmitButton
           variant='contained'

@@ -2,8 +2,8 @@ import React, { useEffect, useRef } from 'react'
 import { ListItem } from '@material-ui/core'
 import { useSelector } from 'react-redux'
 
-import * as conversationSelectors from 'state/conversation/conversationSelectors'
-import * as userSelectors from 'state/user/userSelectors'
+import conversationSelectors from 'state/conversation/conversationSelectors'
+import userSelectors from 'state/user/userSelectors'
 
 import Message from 'components/Message'
 

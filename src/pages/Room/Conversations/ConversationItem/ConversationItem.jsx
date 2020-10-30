@@ -7,8 +7,8 @@ import {
   ListItemText
 } from '@material-ui/core'
 
-import * as conversationActions from 'state/conversation/conversationActions'
-import * as userSelectors from 'state/user/userSelectors'
+import conversationActions from 'state/conversation/conversationActions'
+import userSelectors from 'state/user/userSelectors'
 
 import {
   StyledTypography,

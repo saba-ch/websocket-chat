@@ -1,7 +1,14 @@
-export const roomSelector = (state) => state.room
+const roomSelector = (state) => state.room
 
-export const roomIdSelector = state => roomSelector(state).id
+const roomIdSelector = state => roomSelector(state).id
 
-export const roomUsersSelector = state => roomSelector(state).users
+const roomUsersSelector = state => roomSelector(state).users
 
-export const roomUsersLengthSelector = state => roomSelector(state).users?.length
+const roomUsersLengthSelector = state => roomSelector(state).users?.length
+
+export default {
+  roomSelector,
+  roomIdSelector,
+  roomUsersSelector,
+  roomUsersLengthSelector
+}

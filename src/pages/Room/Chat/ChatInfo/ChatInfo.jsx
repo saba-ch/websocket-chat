@@ -2,8 +2,8 @@ import React from 'react'
 import { AppBar, Avatar, IconButton, Typography } from '@material-ui/core'
 import { useSelector } from 'react-redux'
 
-import * as conversationSelectors from 'state/conversation/conversationSelectors'
-import * as roomSelectors from 'state/room/roomSelectors'
+import conversationSelectors from 'state/conversation/conversationSelectors'
+import roomSelectors from 'state/room/roomSelectors'
 
 import {
   StyledRoomTitleContainer,
