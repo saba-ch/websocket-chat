@@ -19,7 +19,6 @@ this project was bootstrapped by [Create React App](https://create-react-app.dev
 ├── public/                          # Static files such as index.html etc.
 ├── src/                             # Application source code
 │   ├── components/                  # Shared React components
-│   ├── hooks/                       # React hooks
 │   ├── state/                       # Redux state
 │   │   │── {module}/                # Module
 │   │   │   │── {module}Actions.js/  # Redux actions
