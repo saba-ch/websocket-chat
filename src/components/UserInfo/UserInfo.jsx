@@ -6,7 +6,8 @@ import roomSelectors from 'state/room/roomSelectors'
 import userSelectors from 'state/user/userSelectors'
 
 import {
-  StyledToolbar
+  StyledToolbar,
+  StyledUserInfoContainer
 } from './UserInfoStyles'
 
 const UserInfo = () => {
@@ -20,14 +21,20 @@ const UserInfo = () => {
           <Typography variant='h6' color='inherit'>
             Room: {roomId}
           </Typography>
-          <IconButton
-            aria-label="account of current user"
-            color="inherit"
-          >
-            <Avatar>
-              {user.name.slice(0, 1)}
-            </Avatar>
-          </IconButton>
+          <StyledUserInfoContainer>
+            <IconButton
+              aria-label="account of current user"
+              color="inherit"
+            >
+              <Avatar>
+                {user.name.slice(0, 1)}
+              </Avatar>
+            </IconButton>
+            <Typography variant='subtitle' color='inherit'>
+              <p>User Id: {user.id}</p>
+              <p>User Name: {user.name}</p>
+            </Typography>
+          </StyledUserInfoContainer>
         </StyledToolbar>
       </AppBar>
     </div>

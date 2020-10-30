@@ -9,13 +9,17 @@ const Notification = () => {
   const [notification, setNotification] = useState({ open: false, message: '', success: false })
 
   useEffect(() => {
+    let timer
+
     eventManager.addListener('notification', ({ success, message }) => {
       setNotification({ open: true, message, success })
 
-      setTimeout(() => {
+      timer = setTimeout(() => {
         setNotification({ open: false, message: '', success: false })
       }, 3000)
     })
+
+    return () => clearTimeout(timer)
   }, [])
 
   const { open, message, success } = notification
