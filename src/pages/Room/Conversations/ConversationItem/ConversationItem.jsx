@@ -15,7 +15,7 @@ import {
   StyledMessage
 } from './ConversationItemStyles'
 
-const ConversationItem = ({ conversationName, selected, conversationId, latestMessage }) => {
+const ConversationItem = ({ conversationName, selected, conversationId, latestMessage = {} }) => {
   const currentUser = useSelector(userSelectors.userSelector)
   const dispatch = useDispatch()
 
@@ -29,8 +29,8 @@ const ConversationItem = ({ conversationName, selected, conversationId, latestMe
   }
 
   const senderName = useMemo(() => {
-    if (latestMessage.user.id === currentUser.id) return 'You'
-    return latestMessage.user.name
+    if (latestMessage.user?.id === currentUser.id) return 'You'
+    return latestMessage.user?.name
   }, [latestMessage, currentUser])
 
   const { message } = latestMessage

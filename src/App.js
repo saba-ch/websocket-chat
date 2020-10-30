@@ -7,6 +7,8 @@ import * as socketManager from 'socket/socketManager'
 
 import Router from 'Router'
 
+import ErrorBoundary from 'components/ErrorBoundry'
+
 const App = () => {
   const dispatch = useDispatch()
 
@@ -15,7 +17,11 @@ const App = () => {
   useEffect(() => {
     return () => Socket.disconnect()
   }, [])
-  return <Router />
+  return (
+    <ErrorBoundary>
+      <Router />
+    </ErrorBoundary>
+  )
 }
 
 export default App
