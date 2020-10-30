@@ -7,7 +7,7 @@ import socketManager from 'socket/socketManager'
 
 import Router from 'Router'
 
-import ErrorBoundary from 'components/ErrorBoundry'
+import ErrorBoundary from 'components/ErrorBoundary'
 
 const App = () => {
   const dispatch = useDispatch()
